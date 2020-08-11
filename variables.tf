@@ -13,6 +13,11 @@ variable "cluster_arn" {
   description = "ARN of an ECS cluster."
 }
 
+variable "vpc_id" {
+  type        = string
+  description = "The VPC id"
+}
+
 variable "subnets" {
   type        = list(string)
   description = "The subnets associated with the task or service."
@@ -130,3 +135,28 @@ variable "ecs_task_role_arn" {
   type        = string
   description = "The ARN of the ECS Task IAM Role."
 }
+
+variable "create_ecs_sfn_role" {
+  default     = true
+  type        = string
+  description = "Specify true to enable creation of Step function IAM role"
+}
+
+variable "ecs_sfn_role_arn" {
+  default     = ""
+  type        = string
+  description = "Specify the role ARN used by the step function"
+}
+
+variable "create_sns_topic" {
+  default     = true
+  type        = string
+  description = "Specify true to enable creation of SNS topic"
+}
+
+variable "sns_topic_arn" {
+  default     = ""
+  type        = string
+  description = "Specify the SNS topic ARN"
+}
+

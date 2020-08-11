@@ -23,11 +23,6 @@ output "ecs_events_role_name" {
   description = "The name of the CloudWatch Events IAM Role."
 }
 
-output "ecs_events_role_description" {
-  value       = join("", aws_iam_role.ecs_events.*.description)
-  description = "The description of the CloudWatch Events IAM Role."
-}
-
 output "ecs_events_policy_id" {
   value       = join("", aws_iam_policy.ecs_events.*.id)
   description = "The CloudWatch Events IAM Policy's ID."
@@ -38,10 +33,6 @@ output "ecs_events_policy_arn" {
   description = "The ARN assigned by AWS to this CloudWatch Events IAM Policy."
 }
 
-output "ecs_events_policy_description" {
-  value       = join("", aws_iam_policy.ecs_events.*.description)
-  description = "The description of the CloudWatch Events IAM Policy."
-}
 
 output "ecs_events_policy_name" {
   value       = join("", aws_iam_policy.ecs_events.*.name)
@@ -93,11 +84,6 @@ output "ecs_task_execution_role_name" {
   description = "The name of the ECS Task Execution IAM Role."
 }
 
-output "ecs_task_execution_role_description" {
-  value       = join("", aws_iam_role.ecs_task_execution.*.description)
-  description = "The description of the ECS Task Execution IAM Role."
-}
-
 output "ecs_task_execution_policy_id" {
   value       = join("", aws_iam_policy.ecs_task_execution.*.id)
   description = "The ECS Task Execution IAM Policy's ID."
@@ -108,10 +94,6 @@ output "ecs_task_execution_policy_arn" {
   description = "The ARN assigned by AWS to this ECS Task Execution IAM Policy."
 }
 
-output "ecs_task_execution_policy_description" {
-  value       = join("", aws_iam_policy.ecs_task_execution.*.description)
-  description = "The description of the ECS Task Execution IAM Policy."
-}
 
 output "ecs_task_execution_policy_name" {
   value       = join("", aws_iam_policy.ecs_task_execution.*.name)
