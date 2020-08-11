@@ -99,7 +99,7 @@ resource "aws_sfn_state_machine" "ecs_sfn_state_machine" {
 
   definition = <<EOF
 {
-  "Comment": "An example of the Amazon States Language for notification on an AWS Fargate task completion",
+  "Comment": "${var.sfn_comment}",
   "StartAt": "Run Fargate Task",
   "TimeoutSeconds": 3600,
   "States": {
@@ -131,7 +131,7 @@ resource "aws_sfn_state_machine" "ecs_sfn_state_machine" {
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "Message": "AWS Fargate Task started by Step Functions succeeded",
+        "Message": "${var.sfn_success_message}",
         "TopicArn": "${var.create_sns_topic ? join("", aws_sns_topic.ecs_cfn_sns_topic.*.arn) : var.sns_topic_arn}"
       },
       "End": true
@@ -140,7 +140,7 @@ resource "aws_sfn_state_machine" "ecs_sfn_state_machine" {
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "Message": "AWS Fargate Task started by Step Functions failed",
+        "Message": "${var.sfn_success_message}",
         "TopicArn": "${var.create_sns_topic ? join("", aws_sns_topic.ecs_cfn_sns_topic.*.arn) : var.sns_topic_arn}"
       },
       "End": true

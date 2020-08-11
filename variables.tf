@@ -160,3 +160,14 @@ variable "sns_topic_arn" {
   description = "Specify the SNS topic ARN"
 }
 
+variable "sfn_comment" {
+  default = "An example of the Amazon States Language for notification on an AWS Fargate task completion"
+}
+
+variable "sfn_success_message" {
+  default = "AWS Fargate Task started by Step Functions succeeded"
+}
+
+variable "sfn_failure_message" {
+  default = "AWS Fargate Task started by Step Functions failed"
+}
