@@ -140,7 +140,7 @@ resource "aws_sfn_state_machine" "ecs_sfn_state_machine" {
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "Message": "${var.sfn_success_message}",
+        "Message": "${var.sfn_failure_message}",
         "TopicArn": "${var.create_sns_topic ? join("", aws_sns_topic.ecs_cfn_sns_topic.*.arn) : var.sns_topic_arn}"
       },
       "End": true
