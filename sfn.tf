@@ -119,22 +119,13 @@ resource "aws_sfn_state_machine" "ecs_sfn_state_machine" {
           }
         }
       },
-      "Next": "Notify Success",
+      "End": true,
       "Catch": [
           {
             "ErrorEquals": [ "States.ALL" ],
             "Next": "Notify Failure"
           }
       ]
-    },
-    "Notify Success": {
-      "Type": "Task",
-      "Resource": "arn:aws:states:::sns:publish",
-      "Parameters": {
-        "Message": "${var.sfn_success_message}",
-        "TopicArn": "${var.create_sns_topic ? join("", aws_sns_topic.ecs_cfn_sns_topic.*.arn) : var.sns_topic_arn}"
-      },
-      "End": true
     },
     "Notify Failure": {
       "Type": "Task",
